@@ -3,6 +3,7 @@ body{
   background-repeat: no-repeat;
   background-size: cover;
   background-color: black;
+overflow-x: hidden;
 }
 
 @font-face {
@@ -61,7 +62,7 @@ span{
 }
 
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 600px) {
   body{
     height: 750px !important;
     background-repeat:repeat !important;
@@ -88,7 +89,7 @@ span{
     width: 50px !important;
   }
   #delete_all_items{
-    /* margin-left: 31px !important; */
+    margin-left: 31px !important;
     margin-top: 10px !important;
     height: 51px !important;
     width: 50px !important;
@@ -127,6 +128,145 @@ li{
    text-indent: 0.5ch !important;
 }
 }
+
+@media only screen and (min-device-width: 600px) and (max-device-width: 800px) {
+#big{
+/* padding-left: -10px !important; */
+margin-left: 40px !important;
+}
+#bg{
+  margin-left: -20px !important;
+}
+
+#add_items{
+margin-left: 190px !important;
+margin-top: 11px !important;
+}
+#delete_all_items{
+margin-top: 11px !important;
+}
+
+ul>li>img{
+  height: 43px !important;
+  width: 45px !important;
+  margin-top: 15px !important;
+  margin-left: 200px !important;
+  display: block !important;
+}
+
+.delclass{
+  margin-left: 290px !important;
+  margin-top: -46px !important;
+  height: 50px !important;
+  width: 53px !important;
+}
+
+li{
+  margin-top: 65px !important;
+}
+}
+
+@media only screen and (min-device-width: 800px) and (max-device-width: 1000px) {
+  #big{
+  margin-left: 100px !important;
+  }
+  #bg{
+    margin-left: 40px !important;
+  }
+  
+  #add_items{
+  margin-left: 190px !important;
+  margin-top: 11px !important;
+  }
+  #delete_all_items{
+  margin-top: 11px !important;
+  }
+  
+  ul>li>img{
+    height: 43px !important;
+    width: 45px !important;
+    margin-top: 15px !important;
+    margin-left: 200px !important;
+    display: block !important;
+  }
+  
+  .delclass{
+    margin-left: 290px !important;
+    margin-top: -46px !important;
+    height: 50px !important;
+    width: 53px !important;
+  }
+  
+  li{
+    margin-top: 65px !important;
+  }
+  }
+
+
+@media only screen and (min-device-width: 1350px) and (max-device-width: 1550px) {
+#big{
+padding-left: 40px !important;
+}
+#bg{
+padding-left: 40px !important;
+}
+}
+
+@media only screen and (min-device-width: 1550px) and (max-device-width: 1750px) {
+#big{
+padding-left: 150px !important;
+}
+#bg{
+padding-left: 165px !important;
+}
+}
+
+@media only screen and (min-device-width: 1750px) and (max-device-width: 1950px) {
+#big{
+padding-left: 200px !important;
+}  
+#bg{
+padding-left: 220px !important;
+}
+}
+
+
+@media only screen and (min-device-width: 1950px) and (max-device-width: 2150px) {
+#big{
+padding-left: 250px !important;
+}  
+#bg{
+padding-left: 275px !important;
+}
+}
+
+@media only screen and (min-device-width: 2150px) and (max-device-width: 2300px) {
+#big{
+padding-left: 280px !important;
+}  
+#bg{
+padding-left: 310px !important;
+}
+}
+
+@media only screen and (min-device-width: 2300px) and (max-device-width: 2500px) {
+#big{
+padding-left: 320px !important;
+}  
+#bg{
+padding-left: 360px !important;
+}
+}
+
+@media only screen and (min-device-width: 2500px) and (max-device-width: 2700px) {
+#big{
+padding-left: 380px !important;
+}  
+#bg{
+padding-left: 430px !important;
+}
+}
+
 
 ul>li>img{
   height: 48px;
@@ -183,8 +323,5 @@ li:hover,input:hover{
   border: 1px solid black;
 }
 
-#file-upload-button,.swal2-file,.swal2-input,.swal-html-container{
-  visibility: hidden !important;
-}
 
 

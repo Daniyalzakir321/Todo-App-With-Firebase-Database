@@ -65,10 +65,6 @@ items.value=""
 function getData(key){
 firebase.database().ref("DATABASE/"+key).on("value",function(data){
 var datas=data.val().value
-console.log(datas)
-  
-var b= document.getElementById("b")
-b.innerHTML= datas
 })
 }
   
@@ -104,59 +100,6 @@ sweetAlertSuccessMsg("Edit Successfully")
 
 
 
-// function getData(key,abc){
-  // console.log(key)
-  // var scoreListing=document.querySelectorAll(".scoreListing")
-  // for(var i=0; i<scoreListing.length; i++){
-  //   console.log(scoreListing[i])
-  //   scoreListing[i].remove()
-  // }
-
-  // On Page Load
-// firebase.database().ref("DATABASE/"+key).on("value",function(data){
-// var datas=data.val().value
-// console.log(data.val().uid)
-// var items=document.getElementById("items")
-// items.innerHTML= datas
-// abc.value=datas
-// console.log(abc)
-// console.log(abc.value)
-// console.log(abc.value=datas)
-
-// var a= document.getElementById("a")
-// var b= document.getElementById("b")
-// b.innerHTML= datas
-
-  
-  // firebase.database().ref("DATABASE").on("value",function(data){
-  // var database= data.val()
-  // var key=Object.keys(database)
-  // console.log(key)
-
-  // for(var i=0; i<key.length; i++){
-  //  var k=key[i]
-  //  var uid= database[k].uid
-  //  var val= database[k].value
-  //  console.log(uid, val)
-   
-  // var li=document.createElement("li", uid +" : "+  val)
-  // li.className="scoreListing"
-  // li.parent="scorelist"  
-  // console.log(li)
-
-
-// })
-// }
-// getData()
-
-
-
-
-
-
-
-
-
 // DELETING ALL ITEMS FROM FIREBASE
 // With Sweet Alert Library
 function del_all_item(){
@@ -187,7 +130,6 @@ function del_all_item(){
 
 
 
-
 // Sweet Alert Library
 function sweetAlertSuccessMsg(msg){
     const Toast = Swal.mixin({
@@ -206,31 +148,3 @@ function sweetAlertSuccessMsg(msg){
     title: msg
   })  
 }
-
-// =======================================================================
-
-
-
-function storeData(){
-var key=(Math.random()*44).toFixed()
-var items=document.getElementById("items")
-var stud={
-  ID: key,
-  Name: "Daniyal" 
-}
-var key=(Math.random()*321).toFixed()
-firebase.database().ref("DATABASE/TODO-"+ key).push(stud)
-}
-// storeData()
-
-
-
-function getDataFirebase(){
-  // On Page Load
-  firebase.database().ref("DATABASE").on("value",function(data){
-    // Direct Without Page Loading
-    // firebase.database().ref("DATABASE").on("child_added",function(data){
-    data.val()
-  })
-}
-// getDataFirebase()

@@ -5,6 +5,45 @@
 
 var li=document.getElementById("li")
 
+// FIREBASE GET DATA
+firebase.database().ref("DATABASE").on("child_added",function(data){
+  var uid=data.val().uid
+  var datas=data.val().value
+
+    
+  // Items
+  var create_li=document.createElement("li")
+  var li_Text=document.createTextNode(datas)
+  create_li.appendChild(li_Text)
+    
+    
+  // Edit  Button
+  var edit_btn= document.createElement("img")
+  edit_btn.src='Images/edit.png'
+  edit_btn.alt="EDIT"
+  edit_btn.setAttribute("id",uid)
+  edit_btn.setAttribute("onclick","edit_li(this)")
+  create_li.appendChild(edit_btn)
+    
+    
+  // Delete  Button
+  var del_btn= document.createElement("img")
+  del_btn.src='Images/bin.png'
+  del_btn.alt="DELETE"
+  del_btn.className="delclass"
+  del_btn.setAttribute("id",uid)
+  del_btn.setAttribute("onclick","delete_li(this)")
+  create_li.appendChild(del_btn)
+    
+    
+  li.appendChild(create_li)
+  items.value=""
+    
+})
+    
+
+
+//  FIREBASE DATA INSERTION
 function add_item(){
 var items=document.getElementById("items")
 if(items.value=="")
@@ -12,90 +51,34 @@ if(items.value=="")
 Swal.fire("Please enter todo items. <br> Can not add empty list.")
 }
 else{
-
-//  FIREBASE DATA INSERTION
 var key=firebase.database().ref("DATABASE").push().key;
-// getData(key,abc)
 firebase.database().ref("DATABASE/"+ key ).set({
 uid: key,
-value: items.value  
-})
-getData(key)
-
-
-// Items
-var create_li=document.createElement("li")
-var li_Text=document.createTextNode(items.value)
-create_li.appendChild(li_Text)
-
-
-// Edit  Button
-var edit_btn= document.createElement("img")
-edit_btn.src='Images/edit.png'
-edit_btn.alt="EDIT"
-edit_btn.setAttribute("onclick","edit_li(this)")
-create_li.appendChild(edit_btn)
-
-
-// Delete  Button
-var del_btn= document.createElement("img")
-del_btn.src='Images/bin.png'
-del_btn.alt="DELETE"
-del_btn.className="delclass"
-del_btn.setAttribute("onclick","delete_li(this)")
-create_li.appendChild(del_btn)
-
-
-// Span To Store Firebase Realtime Key
-var span= document.createElement("span")
-var text=document.createTextNode(key)
-span.appendChild(text)
-create_li.appendChild(span)
-
-li.appendChild(create_li)
-
-items.value=""
-
+value: items.value  })
 }
 }
 
-
-
-// FIREBASE GET DATA
-function getData(key){
-firebase.database().ref("DATABASE/"+key).on("value",function(data){
-var datas=data.val().value
-})
-}
-  
 
 
 // FIREBASE DELETING A SINGLE LI
-function delete_li(rm){
-var key2= rm.parentNode.lastChild.innerHTML
-console.log("Last Child: "+ key2)
-firebase.database().ref("DATABASE/"+ key2).remove()
-rm.parentNode.remove()
+function delete_li(key){
+firebase.database().ref("DATABASE/"+ key.id).remove()
+key.parentNode.remove()
 sweetAlertSuccessMsg("Deleted Successfully")
 }
 
 
 
 // FIREBASE EDIT VALUE
-function edit_li(e){ 
-var val= e.parentNode.firstChild.nodeValue  
-edit_Val= prompt("Enter Edit Value", val)
-e.parentNode.firstChild.nodeValue= edit_Val
-
-  var key2= e.parentNode.lastChild.innerHTML
-  firebase.database().ref("DATABASE/"+ key2).set({
-  uid: key2,
+function edit_li(key){   
+edit_Val= prompt("Enter Edit Value",  key.parentNode.firstChild.nodeValue )
+firebase.database().ref("DATABASE/"+ key.id).set({
+  uid: key.id,
   value: edit_Val 
-  })
-
+})
+key.parentNode.firstChild.nodeValue= edit_Val
 sweetAlertSuccessMsg("Edit Successfully") 
 }
-
 
 
 
